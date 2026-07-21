@@ -24,11 +24,11 @@ on:
         type: string
       backend_iam_role:
         description: Name of the Terraform backend assumable IAM Role
-        default: "admin"
+        default: "github-action"
         type: string
       github_iam_role:
         description: Name of the IAM Role for adding access to ECR repo
-        default: "admin"
+        default: "github-action"
         type: string
       aws_account_id:
         default: "215213927034"
@@ -64,7 +64,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
-          role-to-assume: arn:aws:iam::${{ inputs.aws_account_id }}:role/admin
+          role-to-assume: arn:aws:iam::${{ inputs.aws_account_id }}:role/github-action
           aws-region: ${{ inputs.aws_region }}
 
       - name: Setup Terraform
