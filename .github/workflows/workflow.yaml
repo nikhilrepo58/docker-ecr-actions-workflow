@@ -57,9 +57,17 @@ jobs:
     outputs:
       image_tag: ${{ steps.build-publish.outputs.image_tag }}
       full_image: ${{ steps.build-publish.outputs.full_image }}
+      
 
     steps:
       - uses: actions/checkout@v4.1.0
+
+      - name: Print GitHub Context
+        run: |
+          echo "Repository = ${{ github.repository }}"
+          echo "Owner = ${{ github.repository_owner }}"
+          echo "Ref = ${{ github.ref }}"
+          echo "Event = ${{ github.event_name }}"
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4.1.0
